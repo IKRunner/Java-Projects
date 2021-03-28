@@ -7,12 +7,7 @@ As a part of the CIS 120 Programming Languages Course, Java code for the followi
 - Game
 
 ## Server Model ##
-
-============
-=: Task 2 :=
-============
-
-A `User()` class to store the nickname and userID of each user; and a Channel class to store the nickname of the owner of each channel, the channel name, and a group of users, which is a map data structure with the key being the nickname of the user (type string) and each user profile (type user). The User class has a constructor that sets the userID and nickname via setter methods, along with getter methods for the nickname and userID. Each class implements the Comparable <T> interface and I have overridden both the compareTo and equals methods with my own implementations. Also, in Channel, I have methods that return collection views of all users in a channel and just return the nickname of all users in a channel.
+For the Server Model, a `User()` class to store the `nickname` and `userID` of each user; and a `Channel()` class to store the nickname of the owner of each channel, the channel name, and a group of users, which is a map data structure with the key being the nickname of the user (type string) and each user profile (type user). The User class has a constructor that sets the userID and nickname via setter methods, along with getter methods for the nickname and userID. Each class implements the Comparable <T> interface and I have overridden both the `compareTo` and `equals` methods with my own implementations. Also, in Channel, I have methods that return collection views of all users in a channel and just return the nickname of all users in a channel.
 
 - How do you plan on storing what users are registered on the server?
 
