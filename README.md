@@ -7,30 +7,19 @@ As a part of the CIS 120 Programming Languages Course, Java code for the followi
 - Game
 
 ## Server Model ##
-For the Server Model, a `User()` class to store the `nickname` and `userID` of each user; and a `Channel()` class to store the nickname of the owner of each channel, the channel name, and a group of users, which is a map data structure with the key being the nickname of the user (type string) and each user profile (type user). The User class has a constructor that sets the userID and nickname via setter methods, along with getter methods for the nickname and userID. Each class implements the Comparable <T> interface and I have overridden both the `compareTo` and `equals` methods with my own implementations. Also, in Channel, I have methods that return collection views of all users in a channel and just return the nickname of all users in a channel.
+For the Server Model, a `User()` class to store the `nickname` and `userID` of each user; and a `Channel()` class to store the nickname of the owner of each channel, the channel name, and a group of users, which is a map data structure with the key being the nickname of the user (type string) and each user profile (type user). The User class has a constructor that sets the userID and nickname via setter methods, along with getter methods for the nickname and userID. Each class implements the `Comparable <T>` interface and I have overridden both the `compareTo` and `equals` methods with my own implementations. Also, in Channel, I have methods that return collection views of all users in a channel and just return the nickname of all users in a channel.
 
-- How do you plan on storing what users are registered on the server?
+In `ServerModel`, I am instantiating private two maps, one to hold a map of registered users with the key being the user nickname, and the value the actual user of type `User` of which each is a User object created earlier. The other map is a map of registered channels with the key being the name of the channel, and value being the Channel object created earlier.
 
-In server model, I am instantiating private two maps, one to hold a map of registered users with the key being the user nickname, and the value the actual user of type User of which each is a User object created earlier. The other map is a map of registered channels with the key being the name of the channel, and value being the Channel object created earlier.
-
-- How do you plan on keeping track of which user has which user ID, considering
- the fact that the user's nickname can change over the course of the program?
-
-I will create and instantiate another map in server model that will associate each user nickname to an ID.
+I keep track of whih user has which user ID by instantiating another map in server model that will associate each user nickname to an ID.
 
 - How do you plan on storing what users are in a channel?
 
 There are getter methods that I have implemented that when called, retrieve the list of users in a channel. This is done by calling my instantiated map of registered users, using .contains method of TreeMap. The input variable is the channel name which checks first that the channel exists. If it does I then call my getUserGroup method in channel that returns a list of user nicknames in a channel. I do this with the .get method of TreeMap of which the input variable is the channel of interest.
-	
 
-- How do you plan on keeping track of which user is the owner of each channel?
+To track which user is the owner of each channel, I instantiate private fields in my Channel class that stores the owner, which is passed in as an argument each time a new Channel class is instantiated. There are also getter methods that retrieve the current owner nickname and setter methods that enable one to change the current owner.
 
-I do this by instantiating private fields in my Channel class that store the owner, which is passed in as an argument each time a new Channel class is instantiated. There are also getter methods that retrieve the current owner nickname and setter methods that enable one to change the current owner.
-
-- Justify your choice of collections (Set, Map, or List) for the
-  collections you use in your design.
-
-TreeMap is the most practical for this assignment in that it enables me to store the required associations that this project requires, e.g. nickname to ID, nickname to user, channel to user-group, and channel name to channel.
+The most practical collection for this project is `TreeMap<>` in that it enables me to store the required associations that this project requires, e.g. nickname to ID, nickname to user, channel to user-group, and channel name to channel.
 
 
 ============
