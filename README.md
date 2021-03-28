@@ -24,23 +24,44 @@ In the proces of developing this project, I removed the nickname to id my in ser
 To keep track of which channels are invite-only, I added a private Boolean field in my Channel class that holds the invite-only state of a specific Channel.
 
 Throughout my design itereation, I made quite a few changes. I went through code in servermodel and removed for each loops where a TreeMap method would save, which removed quite a bit of code from methods like createChannel() and addUserToChannel(). I also removed redundant state variables in my Channel class, one being a variable that held the current owner, of type User. This was not needed and I instead directly placed that owner in the userGroup upon instantiating the Channel class. This corrected errors where I was comparing a given nickname to an owner name that was not of type string, but was of type User. I utilized my getOwnerNickname() method that returned the String version of the owner nickname. I noticed this as a warning but caused me to fail certain test cases where an owner that was kicked out of channel did not result in deleting that channel.  I also went through and corrected ConcurrentModificatonExceptions which arose from deleting channels that I was currently iterating through. I first became aware of this problem after my first submission attempt and wrote comprehensive test cases to isolate the issue. I addressed this issue by saving the specific channel to delete to a set of channels deleting only after exiting the loop. I also fixed a case where I was inviting a user to a non-existent channel. A second submission attempt revealed this error so I created a test to test what happens when I invite a user to a non-existent. It resulted in a null-pointer exception. I realized that I was checking if a channel existed after checking if the channel was public, which would result in a null pointer exception if the channel did not exist. So I moved the error checking case for channel existence to be above the case for checking if the channel was public and that solved the issue.
+
+Implemented methods:
 ```
-Command()
-ServerModel()
-ServerModelTest()
+Command.java
+ServerModel.java
+ServerModelTest.java
 ```
 
 ## Spelllchecker ##
+# TODO
+A Java spell check program was written that takes a dictionary and list of corrections for misspelled words in a .txt file and gives users the option of swapping out the mispelled words for correct ones 
+
+Implemented methods
 ```
-TokenScanner()
-2: Dictionary()
-3.2: FileCorrector()
-3.4: SwapCorrector()
-SpellChecker()
+TokenScanner.java
+Dictionary.java
+FileCorrector.java
+SwapCorrector.java
+SpellChecker.java
 ```
 
 ## Game ##
+# TODO
 
 ```
-// TODO Code
+Background.java
+Circle.java
+Direction.java
+DualCourt.java
+Game.java
+GameObj.java
+GameSprite.java
+LeftPipe.java
+Platform.java
+Poison.java
+RightPipe.java
+ScoreParser.java
+ScoreParserList.java
+SingleCourt.java
+Square.java
 ```
